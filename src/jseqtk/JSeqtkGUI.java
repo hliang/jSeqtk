@@ -14,12 +14,15 @@ package jseqtk;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.JFileChooser;
 //import javax.swing.JFileChooser;
 
 public class JSeqtkGUI extends javax.swing.JFrame {
 
+    Hashtable cmdOptions = new Hashtable();
     /**
      * Creates new form JSeqtkGUI
      */
@@ -410,6 +413,7 @@ public class JSeqtkGUI extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         System.out.println("starting ...");
+        System.out.println(getCmdOptions());
         List<String> listOfString = new ArrayList<String>();;
         listOfString.addAll(Arrays.asList("/opt/local/bin/seqtk", "seq"));
         listOfString.add("-f");
@@ -425,37 +429,47 @@ public class JSeqtkGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void seq_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_cActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-c", null);
     }//GEN-LAST:event_seq_cActionPerformed
 
     private void seq_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_AActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-A", null);
     }//GEN-LAST:event_seq_AActionPerformed
 
     private void seq_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_1ActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-1", "1111");
     }//GEN-LAST:event_seq_1ActionPerformed
 
     private void seq_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_VActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-V", null);
     }//GEN-LAST:event_seq_VActionPerformed
 
     private void seq_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_2ActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-2", "2222");
     }//GEN-LAST:event_seq_2ActionPerformed
 
     private void seq_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_CActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-C", null);
     }//GEN-LAST:event_seq_CActionPerformed
 
     private void seq_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_rActionPerformed
-        // TODO add your handling code here:
+        cmdOptions.put("-r", "XXX");
     }//GEN-LAST:event_seq_rActionPerformed
 
     private void outputFilePathTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputFilePathTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_outputFilePathTextFieldActionPerformed
 
+    private List<String> getCmdOptions() {
+        List<String> listOfStrings = new ArrayList<String>();
+        Enumeration optionNames = cmdOptions.keys();
+        while(optionNames.hasMoreElements()) {
+            String str = (String) optionNames.nextElement();
+            listOfStrings.add(str);
+            listOfStrings.add((String) cmdOptions.get(str)); // CANNOT add null!!!
+        }
+        return listOfStrings;
+    }
     /**
      * @param args the command line arguments
      */
