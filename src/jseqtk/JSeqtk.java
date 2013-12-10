@@ -163,6 +163,7 @@ public class JSeqtk {
     public void runCommand() {
         try {
             System.out.print("++++++++\n");
+            System.out.println(cmdList);
             // System.out.print(getFullCmd());
             ProcessBuilder pb = new ProcessBuilder(cmdList);
             pb.redirectErrorStream(true);
