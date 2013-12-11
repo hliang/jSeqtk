@@ -15,14 +15,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map;
 import javax.swing.JFileChooser;
 //import javax.swing.JFileChooser;
 
 public class JSeqtkGUI extends javax.swing.JFrame {
 
-    Hashtable cmdOptions = new Hashtable();
+    HashMap cmdOptions = new HashMap<String, String>();
     /**
      * Creates new form JSeqtkGUI
      */
@@ -50,6 +54,23 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         logScrollPane = new javax.swing.JScrollPane();
         logTextArea = new javax.swing.JTextArea();
+        seqSettings = new javax.swing.JPanel();
+        seq_f = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        seq_q = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        seq_n = new javax.swing.JTextField();
+        seq_Q = new javax.swing.JTextField();
+        seq_M = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        seq_L = new javax.swing.JTextField();
+        seq_s = new javax.swing.JTextField();
+        seq_l = new javax.swing.JTextField();
         seq_c = new javax.swing.JRadioButton();
         seq_A = new javax.swing.JRadioButton();
         seq_1 = new javax.swing.JRadioButton();
@@ -57,22 +78,6 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         seq_2 = new javax.swing.JRadioButton();
         seq_C = new javax.swing.JRadioButton();
         seq_r = new javax.swing.JRadioButton();
-        seq_q = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        seq_l = new javax.swing.JTextField();
-        seq_s = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        seq_M = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        seq_n = new javax.swing.JTextField();
-        seq_Q = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        seq_f = new javax.swing.JTextField();
-        seq_L = new javax.swing.JTextField();
 
         inputFileChooser.setApproveButtonToolTipText("");
         inputFileChooser.setDialogTitle("Select Input File");
@@ -132,6 +137,38 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         });
         logScrollPane.setViewportView(logTextArea);
 
+        seq_f.setText("1");
+
+        jLabel6.setText("-M");
+
+        jLabel9.setText("-f");
+
+        seq_q.setText("0");
+
+        jLabel1.setText("-q");
+
+        jLabel8.setText("-Q");
+
+        jLabel7.setText("-n");
+
+        jLabel2.setText("-l");
+
+        seq_n.setText("0");
+
+        seq_Q.setText("33");
+
+        seq_M.setText("null");
+
+        jLabel4.setText("-s");
+
+        jLabel10.setText("-L");
+
+        seq_L.setText("0");
+
+        seq_s.setText("11");
+
+        seq_l.setText("0");
+
         seq_c.setText("-c");
         seq_c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,37 +218,110 @@ public class JSeqtkGUI extends javax.swing.JFrame {
             }
         });
 
-        seq_q.setText("0");
-
-        jLabel1.setText("-q");
-
-        jLabel2.setText("-l");
-
-        seq_l.setText("0");
-
-        seq_s.setText("11");
-
-        jLabel4.setText("-s");
-
-        seq_M.setText("null");
-
-        jLabel6.setText("-M");
-
-        jLabel7.setText("-n");
-
-        seq_n.setText("0");
-
-        seq_Q.setText("33");
-
-        jLabel8.setText("-Q");
-
-        jLabel9.setText("-f");
-
-        jLabel10.setText("-L");
-
-        seq_f.setText("1");
-
-        seq_L.setText("0");
+        javax.swing.GroupLayout seqSettingsLayout = new javax.swing.GroupLayout(seqSettings);
+        seqSettings.setLayout(seqSettingsLayout);
+        seqSettingsLayout.setHorizontalGroup(
+            seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seqSettingsLayout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(seq_2)
+                    .addComponent(seq_C)
+                    .addComponent(seq_r))
+                .addGap(82, 82, 82))
+            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seqSettingsLayout.createSequentialGroup()
+                    .addGap(55, 55, 55)
+                    .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(seqSettingsLayout.createSequentialGroup()
+                            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel6))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(seq_q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_s, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_M, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_l, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(29, 29, 29)
+                            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel10))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(seq_n, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_f, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seq_L, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(seq_c)
+                            .addComponent(seq_A)
+                            .addComponent(seq_1)
+                            .addComponent(seq_V)))
+                    .addContainerGap(56, Short.MAX_VALUE)))
+        );
+        seqSettingsLayout.setVerticalGroup(
+            seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seqSettingsLayout.createSequentialGroup()
+                .addContainerGap(161, Short.MAX_VALUE)
+                .addComponent(seq_r)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(seq_C)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(seq_2)
+                .addGap(38, 38, 38))
+            .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seqSettingsLayout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(seqSettingsLayout.createSequentialGroup()
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_q, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_l, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_s, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_M, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)))
+                            .addGroup(seqSettingsLayout.createSequentialGroup()
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_Q, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_f, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(seqSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(seq_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))))
+                        .addGroup(seqSettingsLayout.createSequentialGroup()
+                            .addGap(148, 148, 148)
+                            .addComponent(seq_c)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(seq_A)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(seq_1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(seq_V)))
+                    .addContainerGap(11, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,65 +333,29 @@ public class JSeqtkGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(optionLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel1)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel4)
-                                                    .addComponent(jLabel6))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(seq_q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_s, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_M, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_l, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(29, 29, 29)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel8)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jLabel10))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(seq_n, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_f, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(seq_L, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(seq_c)
-                                                    .addComponent(seq_A)
-                                                    .addComponent(seq_1)
-                                                    .addComponent(seq_V))
-                                                .addGap(27, 27, 27)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(seq_2)
-                                                    .addComponent(seq_C)
-                                                    .addComponent(seq_r))))
-                                        .addGap(81, 81, 81))))
+                                .addComponent(optionLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(selectInputButton)
                                     .addComponent(selectOutputButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inputFilePathTextField)
-                                    .addComponent(outputFilePathTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(seqSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(inputFilePathTextField)
+                                        .addComponent(outputFilePathTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 30, Short.MAX_VALUE)
                         .addComponent(logScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(startButton)
                         .addGap(92, 92, 92)
                         .addComponent(exitButton)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +365,7 @@ public class JSeqtkGUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(logScrollPane))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(inputFilePathTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectInputButton))
@@ -299,58 +373,11 @@ public class JSeqtkGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outputFilePathTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectOutputButton))
-                        .addGap(19, 19, 19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_q, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(optionLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_l, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_s, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_M, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_Q, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_f, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(seq_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(seq_c)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seq_A)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seq_1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seq_V))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(seq_r)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seq_C)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seq_2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                            .addComponent(optionLabel)
+                            .addComponent(seqSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -429,31 +456,59 @@ public class JSeqtkGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void seq_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_cActionPerformed
-        cmdOptions.put("-c", null);
+        if(cmdOptions.containsKey("-c")) {
+            cmdOptions.remove("-c");
+        } else {
+            cmdOptions.put("-c", "ccc");
+        }
     }//GEN-LAST:event_seq_cActionPerformed
 
     private void seq_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_AActionPerformed
-        cmdOptions.put("-A", null);
+        if(cmdOptions.containsKey("-A")) {
+            cmdOptions.remove("-A");
+        } else {
+            cmdOptions.put("-A", null);
+        }
     }//GEN-LAST:event_seq_AActionPerformed
 
     private void seq_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_1ActionPerformed
-        cmdOptions.put("-1", "1111");
+        if(cmdOptions.containsKey("-1")) {
+            cmdOptions.remove("-1");
+        } else {
+            cmdOptions.put("-1", null);
+        }
     }//GEN-LAST:event_seq_1ActionPerformed
 
     private void seq_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_VActionPerformed
-        cmdOptions.put("-V", null);
+        if(cmdOptions.containsKey("-V")) {
+            cmdOptions.remove("-V");
+        } else {
+            cmdOptions.put("-V", null);
+        }
     }//GEN-LAST:event_seq_VActionPerformed
 
     private void seq_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_2ActionPerformed
-        cmdOptions.put("-2", "2222");
+        if(cmdOptions.containsKey("-2")) {
+            cmdOptions.remove("-2");
+        } else {
+            cmdOptions.put("-2", null);
+        }
     }//GEN-LAST:event_seq_2ActionPerformed
 
     private void seq_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_CActionPerformed
-        cmdOptions.put("-C", null);
+        if(cmdOptions.containsKey("-C")) {
+            cmdOptions.remove("-C");
+        } else {
+            cmdOptions.put("-C", null);
+        }
     }//GEN-LAST:event_seq_CActionPerformed
 
     private void seq_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seq_rActionPerformed
-        cmdOptions.put("-r", "XXX");
+        if(cmdOptions.containsKey("-r")) {
+            cmdOptions.remove("-r");
+        } else {
+            cmdOptions.put("-r", null);
+        }
     }//GEN-LAST:event_seq_rActionPerformed
 
     private void outputFilePathTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputFilePathTextFieldActionPerformed
@@ -462,11 +517,33 @@ public class JSeqtkGUI extends javax.swing.JFrame {
 
     private List<String> getCmdOptions() {
         List<String> listOfStrings = new ArrayList<String>();
-        Enumeration optionNames = cmdOptions.keys();
-        while(optionNames.hasMoreElements()) {
-            String str = (String) optionNames.nextElement();
-            listOfStrings.add(str);
-            listOfStrings.add((String) cmdOptions.get(str)); // CANNOT add null!!!
+        
+        // get settings from textfield NOT WORKING !!! need variable name too
+        java.awt.Component[] children = seqSettings.getComponents();
+        for (int i=0;i<children.length;i++){
+            if (children[i] instanceof javax.swing.JTextField){
+                String text = ((javax.swing.JTextField) children[i]).getText();
+            }
+        }
+        
+        // iterate through hashtable
+//        Enumeration optionNames = cmdOptions.keys();
+//        while(optionNames.hasMoreElements()) {
+//            String str = (String) optionNames.nextElement();
+//            listOfStrings.add(str);
+//            listOfStrings.add((String) cmdOptions.get(str)); // CANNOT add null!!!
+//        }
+        
+        // iterate through hashmap, store command options in a list
+        Iterator it = cmdOptions.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry pairs = (Map.Entry) it.next();;
+            String key = (String) pairs.getKey();
+            String value = (String) pairs.getValue();
+            listOfStrings.add(key);
+            if(value != null) {
+                listOfStrings.add(value);
+            }
         }
         return listOfStrings;
     }
@@ -524,6 +601,7 @@ public class JSeqtkGUI extends javax.swing.JFrame {
     private javax.swing.JTextField outputFilePathTextField;
     private javax.swing.JButton selectInputButton;
     private javax.swing.JButton selectOutputButton;
+    private javax.swing.JPanel seqSettings;
     private javax.swing.JRadioButton seq_1;
     private javax.swing.JRadioButton seq_2;
     private javax.swing.JRadioButton seq_A;
