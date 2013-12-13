@@ -42,6 +42,9 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         optTextFields.put("-f", seq_f);
         optTextFields.put("-M", seq_M);
         optTextFields.put("-L", seq_L);
+
+        //MessageConsole console;
+        MessageConsole.redirectOutput( logTextArea );
     }
 
     /**
