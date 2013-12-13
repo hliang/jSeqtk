@@ -9,6 +9,8 @@ package jseqtk;
 /**
  *
  * @author hliang
+ * steal from camickr@stackoverflow
+ * http://stackoverflow.com/questions/4443878/redirecting-system-out-to-jtextpane
  */
 import java.io.*;
 import java.awt.event.*;
