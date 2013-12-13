@@ -27,11 +27,21 @@ import javax.swing.JFileChooser;
 public class JSeqtkGUI extends javax.swing.JFrame {
 
     HashMap cmdOptions = new HashMap<String, String>();
+    HashMap optTextFields = new HashMap<String, javax.swing.JTextField>();
     /**
      * Creates new form JSeqtkGUI
      */
     public JSeqtkGUI() {
         initComponents();
+        // add <parameter, setting> to a hashmap. will need for getText and add these settings to command line
+        optTextFields.put("-q", seq_q);
+        optTextFields.put("-n", seq_n);
+        optTextFields.put("-l", seq_l);
+        optTextFields.put("-Q", seq_Q);
+        optTextFields.put("-s", seq_s);
+        optTextFields.put("-f", seq_f);
+        optTextFields.put("-M", seq_M);
+        optTextFields.put("-L", seq_L);
     }
 
     /**
@@ -156,8 +166,6 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         seq_n.setText("0");
 
         seq_Q.setText("33");
-
-        seq_M.setText("null");
 
         jLabel4.setText("-s");
 
@@ -323,6 +331,8 @@ public class JSeqtkGUI extends javax.swing.JFrame {
                     .addContainerGap(11, Short.MAX_VALUE)))
         );
 
+        seq_A.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -442,14 +452,18 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         System.out.println("starting ...");
         System.out.println(getCmdOptions());
         List<String> listOfString = new ArrayList<String>();;
-        listOfString.addAll(Arrays.asList("/opt/local/bin/seqtk", "seq"));
-        listOfString.add("-f");
-        listOfString.add("0.2");
-        //listOfString.add("-A");
-        listOfString.add(inputFilePathTextField.getText());
-        //List<String> listOfString = Arrays.asList("date");
+        listOfString.addAll(Arrays.asList("/opt/local/bin/seqtk", "seq")); //program
+        listOfString.addAll(getCmdOptions()); //options
+        if(new File(inputFilePathTextField.getText()).isFile()) { //check if file exists
+            listOfString.add(inputFilePathTextField.getText()); //add input file to the command line
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "ERROR: Invalid Input File", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        //System.out.println(listOfString);
         JSeqtk jseqtkInstance = new JSeqtk(listOfString);
-        jseqtkInstance.setOutFile("/Users/hliang/NetBeansProjects/jSeqtk/output.txt");
+        jseqtkInstance.setOutFile(outputFilePathTextField.getText());
         //jseqtkInstance.setCommand("seqtk comp ");
         //jseqtkInstance.setOptions("-q 20 -n _ -f 0.5 /Users/hliang/NetBeansProjects/jSeqtk/sample_R1.fastq");
         jseqtkInstance.runCommand();
@@ -459,7 +473,7 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         if(cmdOptions.containsKey("-c")) {
             cmdOptions.remove("-c");
         } else {
-            cmdOptions.put("-c", "ccc");
+            cmdOptions.put("-c", null);
         }
     }//GEN-LAST:event_seq_cActionPerformed
 
@@ -518,31 +532,27 @@ public class JSeqtkGUI extends javax.swing.JFrame {
     private List<String> getCmdOptions() {
         List<String> listOfStrings = new ArrayList<String>();
         
-        // get settings from textfield NOT WORKING !!! need variable name too
-        java.awt.Component[] children = seqSettings.getComponents();
-        for (int i=0;i<children.length;i++){
-            if (children[i] instanceof javax.swing.JTextField){
-                String text = ((javax.swing.JTextField) children[i]).getText();
+        // get settings from textfields
+        Iterator it = optTextFields.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry pairs = (Map.Entry) it.next();;
+            String key = (String) pairs.getKey();
+            String value = ((javax.swing.JTextField) pairs.getValue()).getText();
+            if(value.length() > 0) {
+                listOfStrings.add(key);
+                listOfStrings.add(value);
             }
         }
-        
-        // iterate through hashtable
-//        Enumeration optionNames = cmdOptions.keys();
-//        while(optionNames.hasMoreElements()) {
-//            String str = (String) optionNames.nextElement();
-//            listOfStrings.add(str);
-//            listOfStrings.add((String) cmdOptions.get(str)); // CANNOT add null!!!
-//        }
-        
+       
         // iterate through hashmap, store command options in a list
-        Iterator it = cmdOptions.entrySet().iterator();
+        it = cmdOptions.entrySet().iterator();
         while(it.hasNext()){
             Map.Entry pairs = (Map.Entry) it.next();;
             String key = (String) pairs.getKey();
             String value = (String) pairs.getValue();
             listOfStrings.add(key);
             if(value != null) {
-                listOfStrings.add(value);
+                listOfStrings.add(key);
             }
         }
         return listOfStrings;
