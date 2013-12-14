@@ -165,18 +165,39 @@ public class JSeqtk {
             System.out.print("++++++++\n");
             System.out.println(cmdList);
             // System.out.print(getFullCmd());
-            ProcessBuilder pb = new ProcessBuilder(cmdList);
-            pb.redirectErrorStream(true);
-            //pb.redirectOutput(new File("/Users/hliang/NetBeansProjects/jSeqtk/output.txt"));
-            pb.redirectOutput(new File(outFile));
-            Process p = pb.start();
-            //InputStream err = p.getErrorStream() ;
-            Thread.sleep(2000);
-            p.destroy() ;
-            int exitVal = p.exitValue();
+            // extract the executable using Class.getResourceAsStream() and write it to a temporary
+            InputStream src =this.getClass().getResourceAsStream("seqtk"); 
+            if(src!=null) {
+                File exeTempFile = File.createTempFile("seqtk", ".tmp");  // create file
+                exeTempFile.setExecutable(true); // set file permission to be executable
+                
+                // write file content
+                byte []ba=new byte[src.available()];
+                src.read(ba,0,ba.length);
+                exeTempFile.deleteOnExit();  
+                FileOutputStream os=new FileOutputStream(exeTempFile);
+                os.write(ba,0,ba.length);
+                os.close();
+                
+                String exeFilePath = exeTempFile.getAbsolutePath(); // file path
+                cmdList.add(0, exeFilePath);  // add to the beginning of the command line
+                System.out.println("command:" + cmdList);
+                
+                ProcessBuilder pb = new ProcessBuilder(cmdList);
+                pb.redirectErrorStream(true);
+                //pb.redirectOutput(new File("/Users/hliang/NetBeansProjects/jSeqtk/output.txt"));
+                pb.redirectOutput(new File(outFile));
+                Process p = pb.start();
+                //InputStream err = p.getErrorStream() ;
+                Thread.sleep(2000);
+                p.destroy() ;
+                int exitVal = p.exitValue();
 
-            System.out.println("Process exitValue: " + exitVal);
-            System.out.print("++++++++\n");
+                System.out.println("Process exitValue: " + exitVal);
+                System.out.print("++++++++\n");
+            } else {
+                System.out.println("Executable not found");
+            }
         } catch (Exception ex) {
             /*handle exception*/
             ex.printStackTrace();
@@ -197,17 +218,38 @@ public class JSeqtk {
         try {
             System.out.print("++++++++\n");
             // System.out.print(getFullCmd());
-            ProcessBuilder pb = new ProcessBuilder(command, options);
-            pb.redirectErrorStream(true);
-            pb.redirectOutput(new File("/Users/hliang/NetBeansProjects/jSeqtk/output.txt"));
-            Process p = pb.start();
-            //InputStream err = p.getErrorStream() ;
-            Thread.sleep(2000);
-            p.destroy() ;
-            int exitVal = p.exitValue();
+            // extract the executable using Class.getResourceAsStream() and write it to a temporary
+            InputStream src =this.getClass().getResourceAsStream("seqtk"); 
+            if(src!=null) {
+                File exeTempFile = File.createTempFile("seqtk", ".tmp");  // create file
+                exeTempFile.setExecutable(true); // set file permission to be executable
+                
+                // write file content
+                byte []ba=new byte[src.available()];
+                src.read(ba,0,ba.length);
+                exeTempFile.deleteOnExit();  
+                FileOutputStream os=new FileOutputStream(exeTempFile);
+                os.write(ba,0,ba.length);
+                os.close();
+                
+                String exeFilePath = exeTempFile.getAbsolutePath(); // file path
+                cmdList.add(0, exeFilePath);  // add to the beginning of the command line
+                System.out.println("command:" + cmdList);
+                
+                ProcessBuilder pb = new ProcessBuilder(command, options);
+                pb.redirectErrorStream(true);
+                pb.redirectOutput(new File("/Users/hliang/NetBeansProjects/jSeqtk/output.txt"));
+                Process p = pb.start();
+                //InputStream err = p.getErrorStream() ;
+                Thread.sleep(2000);
+                p.destroy() ;
+                int exitVal = p.exitValue();
 
-            System.out.println("Process exitValue: " + exitVal);
-            System.out.print("++++++++\n");
+                System.out.println("Process exitValue: " + exitVal);
+                System.out.print("++++++++\n");
+            } else {
+                System.out.println("Executable not found");
+            }
         } catch (Exception ex) {
             /*handle exception*/
             ex.printStackTrace();

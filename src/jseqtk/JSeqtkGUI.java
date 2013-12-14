@@ -455,9 +455,9 @@ public class JSeqtkGUI extends javax.swing.JFrame {
         System.out.println("starting ...");
         System.out.println(getCmdOptions());
         List<String> listOfString = new ArrayList<String>();;
-        listOfString.addAll(Arrays.asList("/opt/local/bin/seqtk", "seq")); //program
+        listOfString.addAll(Arrays.asList("seq")); //program
         listOfString.addAll(getCmdOptions()); //options
-        if(new File(inputFilePathTextField.getText()).isFile()) { //check if file exists
+        if(new File(inputFilePathTextField.getText()).isFile()) { //check if input file exists
             listOfString.add(inputFilePathTextField.getText()); //add input file to the command line
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "ERROR: Invalid Input File", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
